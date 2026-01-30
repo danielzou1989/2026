@@ -10,12 +10,8 @@ import requests
 import json
 from typing import Dict, List, Optional, Tuple
 from decimal import Decimal
-import sys
-import os
 
-# 添加父目录到路径以导入 rate_limiter
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-from core.rate_limiter import AdaptiveRateLimiter
+from exchange_connector.core.rate_limiter import AdaptiveRateLimiter
 
 
 class BitgetAdapter:
