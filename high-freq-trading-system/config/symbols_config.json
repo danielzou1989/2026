@@ -1,0 +1,43 @@
+{
+  "symbols": {
+    "BTCUSDT": {
+      "enabled": true,
+      "product_type": "USDT-FUTURES",
+      "margin_coin": "USDT",
+      "min_order_size": 0.001,
+      "price_precision": 1,
+      "size_precision": 3,
+      "leverage": 3,
+      "margin_mode": "crossed"
+    },
+    "ETHUSDT": {
+      "enabled": true,
+      "product_type": "USDT-FUTURES",
+      "margin_coin": "USDT",
+      "min_order_size": 0.01,
+      "price_precision": 2,
+      "size_precision": 2,
+      "leverage": 3,
+      "margin_mode": "crossed"
+    }
+  },
+  "rate_limits": {
+    "place_order": {
+      "limit": 10,
+      "window": 1
+    },
+    "batch_order": {
+      "limit": 5,
+      "window": 1,
+      "max_batch_size": 20
+    },
+    "query": {
+      "limit": 20,
+      "window": 1
+    },
+    "cancel_order": {
+      "limit": 10,
+      "window": 1
+    }
+  }
+}

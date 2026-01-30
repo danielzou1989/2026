@@ -1,0 +1,36 @@
+{
+  "volume_boost": {
+    "enabled": true,
+    "capital_allocation": 0.10,
+    "target_volume_daily": 100000,
+    "max_single_order_value": 1200,
+    "strategies": {
+      "hedge_strategy": {
+        "enabled": true,
+        "weight": 0.6,
+        "min_spread": 0.0007,
+        "order_size": 550,
+        "max_concurrent_pairs": 4
+      },
+      "quick_flip_strategy": {
+        "enabled": true,
+        "weight": 0.4,
+        "flip_profit_target": 0.0025,
+        "max_holding_time": 240,
+        "max_concurrent_flips": 2
+      }
+    },
+    "fee_optimization": {
+      "maker_fee": -0.0002,
+      "taker_fee": 0.0005,
+      "vip_level": 0,
+      "prefer_maker": true
+    },
+    "risk_control": {
+      "max_loss_per_flip": 0.0015,
+      "max_daily_loss": 80,
+      "max_daily_loss_pct": 0.015,
+      "stop_on_main_strategy_loss": true
+    }
+  }
+}

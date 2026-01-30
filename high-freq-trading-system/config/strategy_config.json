@@ -1,0 +1,44 @@
+{
+  "strategies": {
+    "TrendFollowing": {
+      "enabled": true,
+      "weight": 0.30,
+      "capital_allocation": 0.30,
+      "min_signal_score": 5,
+      "symbols": ["BTCUSDT", "ETHUSDT"]
+    },
+    "GridTrading": {
+      "enabled": true,
+      "weight": 0.25,
+      "capital_allocation": 0.25,
+      "min_signal_score": 6,
+      "symbols": ["BTCUSDT", "ETHUSDT"],
+      "grid_levels": 10,
+      "grid_range": 0.05
+    },
+    "Breakout": {
+      "enabled": true,
+      "weight": 0.25,
+      "capital_allocation": 0.25,
+      "min_signal_score": 5,
+      "symbols": ["BTCUSDT", "ETHUSDT"],
+      "lookback_period": 48
+    },
+    "Arbitrage": {
+      "enabled": false,
+      "weight": 0.20,
+      "capital_allocation": 0.20,
+      "min_signal_score": 5,
+      "symbols": ["BTCUSDT", "ETHUSDT"],
+      "zscore_threshold": 2.0
+    }
+  },
+  "global_settings": {
+    "total_capital_utilization": 0.90,
+    "reserve_capital": 0.10,
+    "max_concurrent_strategies": 3,
+    "rebalance_interval": 3600,
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "timeframe": "5m"
+  }
+}

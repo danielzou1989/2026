@@ -1,0 +1,84 @@
+{
+  "rules": [
+    {
+      "id": "expectancy_negative_mae_high",
+      "rule": "expectancy < 0 && mae_mean > 0",
+      "rule_cn": "期望为负且平均不利波动偏高",
+      "targets": [
+        {
+          "target": "risk_config.json",
+          "path": "stop_loss.default_pct",
+          "op": "pct_adjust",
+          "delta": -0.15,
+          "min": 0.001,
+          "reason": "expectancy < 0 且 MAE 偏高，收紧止损以降低单笔亏损"
+        }
+      ]
+    },
+    {
+      "id": "mfe_high_avgwin_low",
+      "rule": "mfe_mean > 0 && avg_win < avg_loss",
+      "rule_cn": "最大有利波动高但平均盈利偏低",
+      "targets": [
+        {
+          "target": "risk_config.json",
+          "path": "take_profit.levels",
+          "op": "scale_levels",
+          "start_index": 1,
+          "scale": 1.1,
+          "reason": "MFE 较高但实现收益偏低，提高中后段止盈目标"
+        }
+      ]
+    },
+    {
+      "id": "cost_ratio_high",
+      "rule": "cost_ratio > 0.35",
+      "rule_cn": "交易成本占比过高",
+      "targets": [
+        {
+          "target": "strategy_config",
+          "path": "hedge_strategy.min_spread",
+          "op": "text",
+          "suggested": "increase 20%~50%",
+          "reason": "成本占比过高，提高最低价差或利润目标"
+        },
+        {
+          "target": "strategy_config",
+          "path": "quick_flip_strategy.flip_profit_target",
+          "op": "text",
+          "suggested": "increase 20%~50%",
+          "reason": "成本占比过高，提高快翻目标"
+        }
+      ]
+    },
+    {
+      "id": "holding_long_expectancy_neg",
+      "rule": "holding_mean > 0 && expectancy < 0",
+      "rule_cn": "平均持仓过长且期望为负",
+      "targets": [
+        {
+          "target": "strategy_config",
+          "path": "quick_flip_strategy.max_holding_time",
+          "op": "text",
+          "suggested": "reduce 10%~30%",
+          "reason": "持仓过长且期望为负，缩短持仓时长"
+        }
+      ]
+    },
+    {
+      "id": "expectancy_negative",
+      "rule": "expectancy < 0",
+      "rule_cn": "整体期望为负",
+      "targets": [
+        {
+          "target": "risk_config.json",
+          "path": "position_sizing.max_position_size",
+          "op": "pct_adjust",
+          "delta": -0.1,
+          "min": 0.05,
+          "reason": "整体期望为负，降低最大仓位限制"
+        }
+      ]
+    }
+  ]
+}

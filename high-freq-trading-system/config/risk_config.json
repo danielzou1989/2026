@@ -1,0 +1,36 @@
+{
+  "sentiment_filter": {
+    "enabled": true,
+    "veto_threshold": -0.4,
+    "critical_threshold": -0.6,
+    "fud_ratio_threshold": 0.3
+  },
+  "stop_loss": {
+    "default_pct": 0.02,
+    "breakout_pct": 0.03,
+    "trailing_enabled": true,
+    "trailing_activation": 0.01,
+    "trailing_distance": 0.01
+  },
+  "take_profit": {
+    "levels": [0.03, 0.05, 0.08],
+    "ratios": [0.40, 0.40, 0.20]
+  },
+  "position_sizing": {
+    "base_position_size": 0.10,
+    "max_position_size": 0.30,
+    "account_risk_pct": 0.02,
+    "volatility_adjustment": true
+  },
+  "liquidation_monitor": {
+    "enabled": true,
+    "maintenance_margin_rate": 0.05,
+    "warning_threshold": 0.20,
+    "critical_threshold": 0.50
+  },
+  "max_drawdown": {
+    "daily_limit": 0.05,
+    "total_limit": 0.15,
+    "auto_stop": true
+  }
+}
